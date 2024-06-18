@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager v4.1 </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Trix CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/trix/dist/trix.css">
+    <!-- Favicon link -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/6286/6286665.png">
+</head>
+<body>
+    <div class="split-container">
+        <div class="task-form-container">
+            <h1>My Tasks</h1>
+            <form id="task-form">
+                <label for="task-title">Task Title</label>
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <label for="task-desc">Task Description</label>
+                <input id="task-desc" type="hidden" name="content">
+                <trix-editor input="task-desc"></trix-editor>
+                <label for="task-priority">Task Priority</label>
+                <select id="task-priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <label for="task-status">Task Status</label>
+                <select id="task-status">
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Pending">Pending</option>
+                </select>
+                <label for="task-date">Due Date</label>
+                <input type="date" id="task-date" required>
+                <!-- Trix Editor for task description -->
+                <div class="trix-editor" id="task-description" input="task-description"></div>
+                
+                <label for="task-category">Task Category</label>
+                <input type="text" id="task-category" placeholder="#Tags like 'EMEA', 'UK', or like any tags">
+                    <!-- Add more options as needed -->
+                
+
+                <button type="submit">Add Task</button>
+            </form>
+            <div id="form-feedback" class="feedback"></div>
+        </div>
+        <div class="task-list-container">
+            <h2>Tasks <span id="task-count">(0)</span></h2>
+            <div class="task-list-header">
+                <input type="text" id="search-tasks" placeholder="Search tasks..." />
+                <select id="sort-select">
+                    <option value="title">Sort by Title</option>
+                    <option value="priority">Sort by Priority</option>
+                    <option value="dueDate">Sort by Due Date</option>
+                </select>
+                <select id="filter-select">
+                    <option value="all">All</option>
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                
+
+                <!-- Add the category filter dropdown here -->
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                    </select>
+                    
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+    <div id="notifications-container"></div> <!-- Notification container -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/trix/dist/trix.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
